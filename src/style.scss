@@ -1,0 +1,636 @@
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap');
+
+$white: hsl(0, 0%, 100%);
+$lightGray: hsl(229, 24%, 87%);
+$lighterGray: hsl(230, 75%, 98%);
+$coolGray: hsl(231, 11%, 63%);
+$magnolia: hsl(217, 100%, 97%);
+$albaster: hsl(231, 100%, 99%);
+
+$lightBlue: hsl(206, 94%, 87%);
+$pastelBlue: hsl(228, 100%, 84%);
+$purplishBlue: hsl(243, 100%, 62%);
+$marineBlue: hsl(213, 96%, 18%);
+$strawberryRed: hsl(354, 84%, 57%);
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    outline: none;
+    border: none;
+
+    font-family: 'Ubuntu', sans-serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+html {
+    font-size: 12px;
+}
+
+body {
+    background-color: rgb(223, 234, 251);
+
+    height: 100vh;
+}
+
+.center{ 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+body.mobile {
+    align-items: unset;
+}
+
+.bgWrapper:not(.mobile){
+    width: 70rem;
+    aspect-ratio: 1.5;
+    background-color: $white;
+    border-radius: 1rem;
+    box-shadow: 0px 5px 1rem $lightGray;
+    padding: 1.2rem;
+}
+
+.sideBanner{
+    height: 100%;
+    width: 20.5rem;
+    background-image: url("./assets/bg-sidebar-desktop.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    border-radius: 0.75rem;
+
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    row-gap: 2rem;
+
+    float: left;
+}
+
+.topBanner{
+    width: 100%;
+    height: 15rem;
+    background-image: url("./assets/bg-sidebar-mobile.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
+    padding-top: 6rem;
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+}
+
+.step{
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 999rem;
+    border: 1px solid $lightBlue;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $white;
+    float: left;
+    margin-right: 1rem;
+    font-weight: 700;
+}
+
+.step.selected{
+    background-color: $lightBlue;
+    color: black;
+}
+
+.stepText{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 100%;
+}
+
+.stepTitle{
+    color: $lightGray;
+    font-size: 1rem;
+    font-weight: 200;
+}
+
+.stepSubtitle{
+    color: $white;
+    font-weight: 600;
+    font-size: 1rem;
+
+    letter-spacing: 0.75px;
+}
+
+.formTitle{
+    font-size: 2.5rem;
+    color: $marineBlue;
+    line-height: 4.5rem;
+}
+
+.formSubtitle{
+    color: $coolGray;
+    font-size: 1.08rem;
+    font-weight: 200;
+}
+
+.mainWrapper{
+    padding-top: 2.5rem;    
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.mainWrapper.mobile{
+    background-color: $white;
+    box-sizing: content-box;
+    padding: 2rem;
+
+    border-radius: 0.75rem;
+    width: 85vw;
+    margin-top: 10.5rem;
+    height: fit-content;
+}
+
+.formWrapper{
+    width: 30rem;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+
+    position: relative;
+}
+
+.formWrapper.mobile{
+    width: 100%;
+}
+
+
+.formHeaders{
+    display: flex;
+    justify-content: space-between;
+}
+
+.inputTitle{
+    font-size: 1rem;
+    font-weight: 400;
+}
+
+.inputError{
+    font-size: 1.05rem;
+    font-weight: 600;
+    color: $strawberryRed;
+
+    display: none;
+}
+
+.formInput{
+    width: 100%;
+    border-radius: 0.75rem;
+    border: 1px solid $lightGray;
+    height: 3rem;
+    font-size: 1rem;
+    padding: 10px;
+}
+
+.formInput.error{
+    border-color: $strawberryRed;
+}
+
+.formInputWrapper{
+    width: 100%;
+    height: 5rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    margin-top: 2rem;
+}
+
+.confirmBtn{
+    width: 7.5rem;
+    aspect-ratio: 2.5;
+    border-radius: 0.5rem;
+    background-color: $marineBlue;
+    color: $white;
+}
+
+.confirmBtn#confirm{
+    background-color: $purplishBlue;
+}
+
+.confirmBtn#confirm:hover{
+    background-color: lighten($purplishBlue, 10);
+    transition-duration: 200ms;
+}
+
+.confirmBtn:hover{
+    background-color: lighten($marineBlue, 10);
+    transition-duration: 200ms;
+}
+
+#nextStep::before{
+    content: 'Next step';
+}
+
+#confirm::before{
+    content: 'Confirm';
+}
+
+.backBtn{
+    color: $coolGray;
+    font-size: 1.2rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.backBtn:hover{
+    color: $marineBlue;
+    transition-duration: 200ms;
+}
+
+.buttonWrapper{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    left: 0;
+    bottom: 1rem;
+}
+
+.buttonWrapper.mobile{
+    width: 90%;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+
+
+.billingCard{
+    padding: 1rem;
+    border-radius: 0.5rem;
+    border: 1px solid $lightGray;
+    width: 15rem;
+    height: 11rem;
+    cursor: pointer;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    & > img {
+        width: 3rem;
+    }
+
+    & > div {
+        & > h1{
+            color: $marineBlue;
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+
+        & > h2 {
+            color: $coolGray;
+            font-size: 1rem;
+            font-weight: 400;
+            margin-top: 0.2rem;
+        }
+    }
+}
+
+.billingCard.mobile{
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 1rem;
+
+    width: 100%;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    height: 6rem;
+}
+
+.billingCard:hover, .billingCard.selected{
+    border-color: $purplishBlue;
+}
+
+.billingCard.selected{
+    background-color: $lighterGray;
+}
+
+.planWrapper{
+    display: flex;
+    gap: 1rem;
+
+    margin-top: 2.5rem;
+}
+
+.planWrapper.mobile{
+    flex-direction: column;
+}
+
+.billingWrapper{
+    width: 100%;
+    aspect-ratio: 8;
+    max-height: 5rem;
+    
+    background-color: $lighterGray;
+
+    margin-top: 2rem;
+    border-radius: 0.4rem;
+
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    align-items: center;
+
+    & > p {
+        font-weight: 600;
+        font-size: 1.3rem;
+        color: $coolGray;
+    }
+
+    & > .billingSlider{
+        position: relative;
+        box-sizing: content-box;
+
+        width: 3rem;
+        height: 1.5rem;
+        padding: 0.25rem;
+        background-color: $marineBlue;
+        border-radius: 999rem;
+
+        & > .billingSelWrapper{
+            pointer-events: none;
+
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            transform: translate(-50%, -50%);
+
+            height: inherit;
+            width: inherit;
+            display: flex;
+            align-items: center;
+
+            & > .billingSel{
+                transition: left 300ms ease-in-out;
+
+                width: 1.3rem;
+                aspect-ratio: 1;
+
+                border-radius: 999rem;
+                background-color: $white;
+                position: absolute;
+                left: 0;
+            }
+        }
+
+        & > div:not(.billingSelWrapper) {
+            width: 50%;
+            aspect-ratio: 1;
+            display: inline-block;
+            position: relative;
+        }
+    }
+}
+
+.billingType.selected{
+    color: $marineBlue;
+}
+
+.billingType{
+    transition: color 200ms ease-out;
+}
+
+.addOnWrapper{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+
+    margin-top: 3rem;
+}
+
+.addOn{
+    padding: 2rem;
+
+    width: 100%;
+    height: 6rem;
+    border: 1px solid $lightGray;
+    border-radius: 0.65rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    & > p {
+        color: $purplishBlue;
+    }
+
+    & > div {
+        width: fit-content;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 2rem;
+    
+        height: 100%;
+    
+        & > input {
+            background-color: $purplishBlue;
+        }
+
+        & > div:not(.checkbox) {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.35rem;
+    
+            & > h1 {
+                font-size: 1.2rem;
+                color: $marineBlue;
+            }
+    
+            & > p {
+                color: $coolGray;
+            }
+        }
+    }
+}
+
+.checkbox{
+    cursor: pointer;
+
+    width: 1.5rem;
+    height: 1.5rem;
+
+    border: 1px solid $lightGray;
+    border-radius: 0.4rem;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    & > i {
+        color: white;
+        font-size: 0.85rem;
+    }
+}
+
+.addOn.selected{
+    
+    .checkbox{
+        background-color: $purplishBlue;
+    }
+
+    border-color: $purplishBlue;
+    background-color: $lighterGray;
+}
+
+.summaryWrapper{
+    width: 100%;
+    height: fit-content;
+    padding: 1.5rem;
+    margin-top: 3rem;
+
+    background-color: $lighterGray;
+    border-radius: 1rem;
+
+    & > .planDetails{
+        width: 100%;
+        height: 3.5rem;
+
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        & > div {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            gap: 0.25rem;
+
+            & > h1{
+                color: $marineBlue;
+                font-size: 1.2rem;
+            }
+        }
+
+        & > p {
+            color: $marineBlue;
+            font-size: 1.25rem;
+            font-weight: 800;
+        }
+    }
+
+    & > .addOns{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        gap: 1.5rem;
+
+        & > div{
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+
+            & > .addOnTitle{
+                color: $coolGray;
+                font-weight: 500;
+                font-size: 1.1rem;
+            }
+
+            & > .addOnCost{
+                color: $marineBlue;
+                font-size: 1.2rem;
+                font-weight: 500;
+            }
+        }
+    }
+}
+
+.totalWrapper{
+    display: flex;
+    justify-content: space-between;
+
+    width: 100%;
+    margin-top: 1.5rem;
+    padding: 0rem 1.5rem 0rem 1.5rem;
+
+    & > .totalCostDesc{
+        color: $coolGray;
+        font-size: 1.1rem;
+    }
+
+    & > .totalCost{
+        color: $purplishBlue;
+        font-weight: 600;
+        font-size: 1.45rem;
+    }
+}
+
+.link{
+    color: $purplishBlue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.link:hover {
+    color: lighten($purplishBlue, 5%)
+}
+
+.lineBreak{
+    height: 0.1rem;
+    width: 100%;
+    margin: auto;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+
+    background-color: $lightGray;
+}
+
+.thanksWrapper{
+    width: 75%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    row-gap: 1rem;
+    text-align: center;
+
+    & > img {
+        margin-bottom: 1rem;
+    }
+
+    & > h1{
+        color: darken($marineBlue, 5%);
+        font-size: 2.5rem;
+    }
+
+    & > p {
+        color: $coolGray;
+        font-size: 1.25rem;
+    }
+}
+
+.thanksWrapper.mobile{
+    width: 100%;
+    margin-bottom: 3rem;
+    margin-top: 1.5rem;
+}
