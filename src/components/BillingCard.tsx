@@ -35,9 +35,9 @@ class CardInfo{
   }
 }
 
-export const ARCADE = new CardInfo("./src/assets/icon-arcade.svg", PlanType.ARCADE, 9)
-export const ADVANCED = new CardInfo("./src/assets/icon-advanced.svg", PlanType.ADVANCED, 12)
-export const PRO = new CardInfo("./src/assets/icon-pro.svg", PlanType.PRO, 15)
+export const ARCADE = new CardInfo("../src/assets/icon-arcade.svg", PlanType.ARCADE, 9)
+export const ADVANCED = new CardInfo("../src/assets/icon-advanced.svg", PlanType.ADVANCED, 12)
+export const PRO = new CardInfo("../src/assets/icon-pro.svg", PlanType.PRO, 15)
 
 export default function BillingCard({cardInfo, billingType, billingPlan, setBillingPlan, isMobile}: Props){
   const selectCard = (elem: HTMLElement) => {
